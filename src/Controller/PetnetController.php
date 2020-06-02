@@ -10,12 +10,12 @@ class PetnetController extends AbstractController
     /**
      * @Route("/petnet", name="petnet")
      */
-    public function index()
+    /* public function index()
     {
         return $this->render('petnet/index.html.twig', [
             'controller_name' => 'PetnetController',
         ]);
-    }
+    } */
 
     /**
      * @Route("/", name="home")
