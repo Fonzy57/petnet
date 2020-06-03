@@ -35,4 +35,11 @@ class PetnetController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/profil", name="profil")
+     */
+    public function profil(){
+        return $this->render('petnet/profil.html.twig');
+    }
+
 }

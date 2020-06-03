@@ -19,9 +19,12 @@
                     <a class="nav-link" href="/informations">Informations</a>
                 </li>
             </ul>
+                {% if not app.user %}
                     <a class="btn btn-success my-2 my-sm-0 mr-sm-2" href="/connexion">Se connecter</a>
-                    
                     <a class="btn btn-outline-info my-2 my-sm-0" href="/inscription">Créer un compte</a>
+                {% else %}
+                    <a class="btn btn-danger my-2 my-sm-0 mr-sm-2" href="/deconnexion">Se déconnecter</a>
+                {% endif %}
 
         </div>
     </nav>
