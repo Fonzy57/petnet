@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Animal;
+use App\Repository\AnimalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class PetnetController extends AbstractController
 {
@@ -38,8 +41,20 @@ class PetnetController extends AbstractController
     /**
      * @Route("/profil", name="profil")
      */
-    public function profil(){
-        return $this->render('petnet/profil.html.twig');
+    public function profil(UserInterface $user){
+
+        return $this->render('petnet/profil.html.twig', [
+            'user' => $user
+        ]);
     }
 
+    /**
+     * @Route("/animal/{id}", name="show_animal")
+     */
+    public function showAnimal(Animal $animal){
+
+        return $this->render('petnet/animal.html.twig', [
+            'animal' => $animal
+        ]);
+    }
 }

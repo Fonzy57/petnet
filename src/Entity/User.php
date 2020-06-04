@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -78,6 +80,18 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $updatedBy;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="user_iduser")
+     */
+    private $animals;
+
+    
+
+    public function __construct()
+    {
+        $this->animals = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -219,6 +233,35 @@ class User implements UserInterface
         return ['ROLE_USER'];
     }
 
+    /**
+     * @return Collection|Animal[]
+     */
+    public function getAnimals(): Collection
+    {
+        return $this->animals;
+    }
 
+    public function addAnimal(Animal $animal): self
+    {
+        if (!$this->animals->contains($animal)) {
+            $this->animals[] = $animal;
+            $animal->setUserIduser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimal(Animal $animal): self
+    {
+        if ($this->animals->contains($animal)) {
+            $this->animals->removeElement($animal);
+            // set the owning side to null (unless already changed)
+            if ($animal->getUserIduser() === $this) {
+                $animal->setUserIduser(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

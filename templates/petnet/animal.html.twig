@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche animal{% endblock %}
+
+{% block body %}
+    <h1>Informations sur <i>{{ animal.name }}</i></h1>
+
+        <p>Type : {{ animal.type }}</p>
+        <p>Race : {{ animal.race }}</p>
+        <p>Age : {{ animal.age }}</p>
+
+        <a href="{{ path('profil') }}" class="btn btn-info">Retour à voter profil</a>
+
+{% endblock %}
