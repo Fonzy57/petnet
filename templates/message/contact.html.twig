@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+    <h1>Nous contacter</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.subject, {'label': 'Sujet du message', 'attr': {'placeholder': 'Prise de RDV, Soins esthétiques, etc...'}}) }}
+        {{ form_row(form.content, {'label': 'Message', 'attr': {'placeholder': 'Votre message'}}) }}
+        {{ form_row(form.date_rdv, {'label': 'Date de RDV'}) }}
+        {{ form_row(form.ask_visio, {'label': 'Demande visio'}) }}
+        {{ form_row(form.ask_rdv, {'label': 'Demande de RDV'}) }}
+        {{ form_row(form.ask_esthetic, {'label': 'Demande de soins esthetiques'}) }}
+        {{ form_row(form.animal_idanimal, {'label': 'Animal concerné'}) }}
+
+        <button type="submit" class="btn btn-success">Envoyer le message</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}

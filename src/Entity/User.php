@@ -86,11 +86,17 @@ class User implements UserInterface
      */
     private $animals;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="user_iduser")
+     */
+    private $messages;
+
     
 
     public function __construct()
     {
         $this->animals = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -258,6 +264,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($animal->getUserIduser() === $this) {
                 $animal->setUserIduser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUserIduser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getUserIduser() === $this) {
+                $message->setUserIduser(null);
             }
         }
 

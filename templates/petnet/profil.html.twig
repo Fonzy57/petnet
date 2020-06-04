@@ -23,13 +23,14 @@
                                 <p>Race : {{ animal.race }}</p>
                                 <p>Age : {{ animal.age }}</p>
                             </p>
-                            <a href="{{ path('show_animal', {'id':animal.id}) }}" class="btn btn-info">Voir l'animal</a>
+                            <a href="{{ path('show_animal', {'id':animal.id}) }}" class="btn btn-info">Voir la fiche de {{ animal.name }}</a>
                         </div>
                 </div>
             {% endfor %}
         </div>
 
-
-
+        <div id="formulaire">
+        
+        </div>
 
 {% endblock %}
