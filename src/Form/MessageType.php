@@ -4,23 +4,29 @@ namespace App\Form;
 
 use App\Entity\Message;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class MessageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject')
+            ->add('subject', ChoiceType::class, [
+                'choices' => [
+                    'Demande de rendez-vous' => 'RDV',
+                    'Demande de soins esthétique' => 'Esthetique',
+                    'Demande de visio avec l\'animal' => 'Visio',
+                    'Autre' => 'Autre'
+                ]
+            ])
             ->add('content')
-            /* ->add('sender') */
-            /* ->add('date_demande') */
-            ->add('date_rdv')
-            ->add('ask_visio')
-            ->add('ask_rdv')
-            ->add('ask_esthetic')
-            /* ->add('user_iduser') */
+            ->add('date_rdv', DateType::class, [
+                'widget' => 'single_text'
+            ])
             ->add('animal_idanimal')
         ;
     }

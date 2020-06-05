@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1>Bienvenue {{ user.userName }} sur votre profil</h1>
+    <h1>Bienvenue sur votre profil {{ user.userName }}</h1>
 
     <h4>Vos informations : </h4>
     <p>Nom : {{ user.lastName }}</p>
@@ -23,14 +23,10 @@
                                 <p>Race : {{ animal.race }}</p>
                                 <p>Age : {{ animal.age }}</p>
                             </p>
-                            <a href="{{ path('show_animal', {'id':animal.id}) }}" class="btn btn-info">Voir la fiche de {{ animal.name }}</a>
+                            <a href="{{ path('show_animal', {'id':animal.id}) }}" class="btn btn-info">Voir les informations de {{ animal.name }}</a>
                         </div>
                 </div>
             {% endfor %}
-        </div>
-
-        <div id="formulaire">
-        
         </div>
 
 {% endblock %}

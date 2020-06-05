@@ -42,20 +42,7 @@ class Message
      */
     private $date_rdv;
 
-    /**
-     * @ORM\Column(type="boolean", length=255, nullable=true)
-     */
-    private $ask_visio;
 
-    /**
-     * @ORM\Column(type="boolean", length=255, nullable=true)
-     */
-    private $ask_rdv;
-
-    /**
-     * @ORM\Column(type="boolean", length=255, nullable=true)
-     */
-    private $ask_esthetic;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="messages")
@@ -129,42 +116,6 @@ class Message
     public function setDateRdv(\DateTimeInterface $date_rdv): self
     {
         $this->date_rdv = $date_rdv;
-
-        return $this;
-    }
-
-    public function getAskVisio(): ?string
-    {
-        return $this->ask_visio;
-    }
-
-    public function setAskVisio(?string $ask_visio): self
-    {
-        $this->ask_visio = $ask_visio;
-
-        return $this;
-    }
-
-    public function getAskRdv(): ?string
-    {
-        return $this->ask_rdv;
-    }
-
-    public function setAskRdv(?string $ask_rdv): self
-    {
-        $this->ask_rdv = $ask_rdv;
-
-        return $this;
-    }
-
-    public function getAskEsthetic(): ?string
-    {
-        return $this->ask_esthetic;
-    }
-
-    public function setAskEsthetic(?string $ask_esthetic): self
-    {
-        $this->ask_esthetic = $ask_esthetic;
 
         return $this;
     }

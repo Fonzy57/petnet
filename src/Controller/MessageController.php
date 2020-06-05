@@ -17,11 +17,11 @@ class MessageController extends AbstractController
      */
     public function message(Request $request, EntityManagerInterface $manager, UserInterface $user){
         $message = new Message();
-
+        
         $form = $this->createForm(MessageType::class, $message);
 
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $message->setSender($user->getUsername())
                     ->setDateDemande(new \DateTime())
@@ -33,7 +33,6 @@ class MessageController extends AbstractController
 
             return $this->redirectToRoute('profil');
         }
-
 
         return $this->render('message/contact.html.twig', [
             'form' => $form->createView()
