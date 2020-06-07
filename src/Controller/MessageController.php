@@ -31,6 +31,8 @@ class MessageController extends AbstractController
             $manager->persist($message);
             $manager->flush();
 
+            $this->addFlash('envoi', 'Votre message a bien été envoyé !');
+
             return $this->redirectToRoute('profil');
         }
 

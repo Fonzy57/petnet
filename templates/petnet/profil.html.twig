@@ -1,10 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}{{title}}{% endblock %}
 
 {% block body %}
 
     <h1>Bienvenue sur votre profil {{ user.userName }}</h1>
+
+    {% for message in app.flashes('envoi') %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
 
     <h4>Vos informations : </h4>
     <p>Nom : {{ user.lastName }}</p>

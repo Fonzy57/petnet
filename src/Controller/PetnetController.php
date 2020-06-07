@@ -44,7 +44,8 @@ class PetnetController extends AbstractController
     public function profil(UserInterface $user){
 
         return $this->render('petnet/profil.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'title' => 'Profil'
         ]);
     }
 
@@ -54,7 +55,8 @@ class PetnetController extends AbstractController
     public function showAnimal(Animal $animal){
 
         return $this->render('petnet/animal.html.twig', [
-            'animal' => $animal
+            'animal' => $animal,
+            'title' => 'Fiche animal'
         ]);
     }
 }
